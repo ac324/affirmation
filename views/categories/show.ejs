@@ -1,0 +1,61 @@
+<% include ../partials/header %>
+<% include ../partials/menu %>
+
+
+  <div class="header">
+      <h1 class="display-4 text-center"><i class="<%= category.icon %>"></i> <%= category.name %></h1>
+      <button class="btn btn-info btn-sm float-right" href="/categories/new" data-toggle="modal" data-target="#exampleModalCenter">Edit Category</a>
+  </div>
+  
+  <div class="container-fluid">
+    <ul class="list-group">
+      <li class="list-group-item">Cras justo odio</li>
+      <li class="list-group-item">Dapibus ac facilisis in</li>
+      <li class="list-group-item">Morbi leo risus</li>
+      <li class="list-group-item">Porta ac consectetur ac</li>
+      <li class="list-group-item">Vestibulum at eros</li>
+      <div class="input-group-prepend">
+        <div class="input-group-text">
+          <input type="checkbox" aria-label="Checkbox for following text input">
+        </div>
+            <li class="list-group-item">Cras justo odio</li>
+    </div>
+    </ul>
+ </div>   
+
+  <!-- Add Category Modal Form -->
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Edit Category</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form action="/categories/<%= category.name %>?_method=PUT" method="POST">
+                    <div class="form-group">
+                        <input class="form-control" type = "text" name = "category[name]" value="<%= category.name %>" required>
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type = "text" name = "category[icon]" value="<%= category.icon %>" required>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-danger mr-auto" form="deleteCategoryForm">DELETE</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Edit</button>
+                    </div>
+                </form>
+                <form id="deleteCategoryForm" class="deleteForm" action="/categories/<%= category.name %>?_method=DELETE" method="POST">
+                    
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+    
+
+
+
+<% include ../partials/footer %>

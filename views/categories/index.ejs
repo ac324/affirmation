@@ -1,0 +1,61 @@
+<% include ../partials/header %>
+<% include ../partials/menu %>
+
+
+    <div class="header">
+        <h2>Find Your Affirmation</h2>
+        <p class="mb-1">Quote of the day:</p>
+        <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+        <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
+        <br>
+
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <!--Affirmation Card-->
+            <% categories.forEach(function(category) { %>
+                <div class="col-6 col-lg-3">
+                    <div class="card text-center shadow-sm">
+                        <a class="card-body" href="/categories/<%= category.name %>">
+                            <i class="afbutton <%= category.icon %> fa-2x"></i>
+                            <h5 class="card-title"><%= category.name %></h5>
+                        </a>
+                    </div>
+                </div>
+            <% }); %>
+        </div>
+        <!-- Add Category Button -->
+        <a href="/categories/new" class="float" data-toggle="modal" data-target="#exampleModalCenter">
+            <i class="fa fa-plus my-float"></i>
+        </a>
+        
+        <!-- Add Category Modal Form -->
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Add Category</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form action="/categories" method="POST">
+                    <div class="form-group">
+                        <input class="form-control" type = "text" name = "name" placeholder = "name" required>
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type = "text" name = "icon" placeholder = "icon" required>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Add</button>
+                    </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+
+<% include ../partials/footer %>

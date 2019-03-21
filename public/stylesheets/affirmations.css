@@ -1,0 +1,62 @@
+/*Affirmation Page*/
+.afbutton.fas, .afbutton.far {
+    color: #7C25EE;
+}
+
+.header {
+    background-color: #7C25EE;
+    color: white;
+    margin: 0 0 30px 0; 
+    padding: 20px;
+}
+
+.blockquote-footer{
+    color: white;
+}
+.card {
+    margin: 10px 0 10px 0;
+}
+
+a {
+    color:black;
+}
+
+a:link {
+  text-decoration: none;
+}
+
+.float{
+	position:fixed;
+	width:60px;
+	height:60px;
+	bottom:40px;
+	right:40px;
+	background-color:#FF5722;
+	color:#FFF;
+	border-radius:50px;
+	text-align:center;
+	box-shadow: 2px 2px 3px #999;
+}
+
+.my-float{
+	margin-top:22px;
+}
+
+.deleteForm {
+    display:inline;
+}
+
+/*Carousel*/
+.carousel-item {
+    height:100vh;
+    background: no-repeat center center scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.carousel-caption h1 {
+    padding-bottom: 35%;
+    color:white;
+}
