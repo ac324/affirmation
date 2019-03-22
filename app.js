@@ -8,7 +8,8 @@ var express         = require("express"),
     bodyParser      = require("body-parser");
 
 var indexRoutes = require("./routes/index"),
-    categoryRoutes = require("./routes/categories");
+    categoryRoutes = require("./routes/categories"),
+    phraseRoutes = require("./routes/phrases");
 
 //Declare App Use
 mongoose.connect("mongodb://localhost/affirmations", {useNewUrlParser: true});
@@ -20,6 +21,7 @@ app.use(methodOverride("_method"));
 //Declaring Routes
 app.use(indexRoutes);
 app.use("/categories", categoryRoutes);
+// app.use("/phrases", phraseRoutes);
 
 
 app.get("/categories/confidence", function(req, res) {
