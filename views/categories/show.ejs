@@ -5,17 +5,7 @@
       <h1 class="display-4 text-center"><i class="<%= category.icon %>"></i> <%= category.name %></h1>
       <!--<button class="btn btn-info btn-sm float-right" href="/categories/new" data-toggle="modal" data-target="#exampleModalCenter">Edit Category</a>-->
   </div>
-  
-  <div class="container-fluid">
-    <ul class="list-group">
-      <li class="list-group-item">Cras justo odio</li>
-      <li class="list-group-item">Dapibus ac facilisis in</li>
-      <li class="list-group-item">Morbi leo risus</li>
-      <li class="list-group-item">Porta ac consectetur ac</li>
-      <li class="list-group-item">Vestibulum at eros</li>
-    </ul>
- </div>   
-
+  <% include ../phrases/index %>
   <!-- Add Category Modal Form -->
         <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered" role="document">

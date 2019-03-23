@@ -26,15 +26,16 @@ router.get("/new", function(req, res){
     });
 });
 
+// CREATE PHRASE ROUTE
 router.post("/", function(req, res){
     Phrase.create(req.body.phrase, function(err, newlyCreated){
         if(err){
             console.log(err);
         } else {
-            console.log(newlyCreated);
-            res.redirect("/categories");
+            res.redirect("/categories/" + req.body.phrase.category);
         }
     })
+    
 })
 
 module.exports = router;

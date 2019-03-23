@@ -37,7 +37,16 @@ router.get("/:category", function(req, res) {
         if(err || !foundCategory){
             console.log(err);
         } else {
-            res.render("categories/show", {category: foundCategory});
+            Phrase.find({category: foundCategory.name}, function(err, foundPhrases){
+                if(err || !foundPhrases){
+                    console.log(err);
+                } else {
+                    console.log(foundPhrases);
+                    res.render("categories/show", {category: foundCategory, phrases: foundPhrases});        
+                }
+                
+            })
+            
         }
     });
 });
