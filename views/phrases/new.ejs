@@ -4,22 +4,25 @@
 <div class="container">
     <h1 style="text-align:center; margin:25px;">Create a New Phrase</h1> 
     <div style="width:30%; margin:25px auto;">
-        <form action="/phrase" method="POST">
+        <form action="/phrases" method="POST">
             <div class="form-group">
-                <input class="form-control" type = "text" name = "affirmation" placeholder = "Write your affirmation" required>
+                <label>Write your affirmation</label>
+                <input class="form-control" type = "text" name = "phrase[affirmation]" placeholder = "I trust myself" required>
             </div>
             <div class="form-group">
-                <input class="form-control" type = "text" name = "background" placeholder = "background" required>
+                <label>Select a background image</label>
+                <input class="form-control" type = "text" name = "phrase[background]" placeholder = "peaceful ocean" required>
             </div>
             <div class="form-group">
-                <select class="form-control">
-                    <option>Default select</option>
+                <label>Select a category</label>
+                <select class="form-control" name = "phrase[category]">
+                    <!--Affirmation Card-->
+                    <% categories.forEach(function(category) { %>
+                        <option value="<%= category._id %>"><%= category.name %></option>
+                    <% }); %>
                 </select>   
             </div>
             
-            <!--<div class="form-group">-->
-            <!--    <input class="form-control" type = "text" name = "category" placeholder = "category" required>-->
-            <!--</div>-->
             <div class="form-group">
                 <button class="btn btn-lg btn-default btn-block btn-primary">Submit!</button>
             </div>

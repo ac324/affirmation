@@ -1,7 +1,8 @@
 //ROUTE PAGE FOR CATEGORIES
 var express = require("express"),
     router  = express.Router({mergeParams:true}),
-    Category = require("../models/category");
+    Category = require("../models/category"),
+    Phrase = require("../models/phrase");
 
 // GET ALL CATEGORIES ROUTE    
 router.get("/", function(req,res){
@@ -21,10 +22,7 @@ router.get("/new", function(req,res){
 
 // POST CATEGORY ROUTE    
 router.post("/", function(req, res){
-    var name = req.body.name;
-    var icon = req.body.icon;
-    var newCategory = {name: name, icon: icon};
-    Category.create(newCategory, function(err, newlyCreated){
+    Category.create(req.body.category, function(err, newlyCreated){
         if(err){
             console.log(err);
         } else {
@@ -32,6 +30,7 @@ router.post("/", function(req, res){
         }
     });
 });
+
 // SHOW CATEGORY ROUTE
 router.get("/:category", function(req, res) {
     Category.findOne({name:req.params.category}, function(err, foundCategory){
@@ -41,8 +40,7 @@ router.get("/:category", function(req, res) {
             res.render("categories/show", {category: foundCategory});
         }
     });
-
-})
+});
 
 // EDIT CATEGORY ROUTE
 router.put("/:category", function(req, res){

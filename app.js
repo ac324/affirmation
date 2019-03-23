@@ -4,9 +4,11 @@ var express         = require("express"),
     howler          = require("howler"),
     mongoose        = require("mongoose"),
     Category        = require("./models/category"),
+    Phrase          = require("./models/phrase"),
     methodOverride = require("method-override"),
     bodyParser      = require("body-parser");
 
+//Routes
 var indexRoutes = require("./routes/index"),
     categoryRoutes = require("./routes/categories"),
     phraseRoutes = require("./routes/phrases");
@@ -21,14 +23,10 @@ app.use(methodOverride("_method"));
 //Declaring Routes
 app.use(indexRoutes);
 app.use("/categories", categoryRoutes);
-// app.use("/phrases", phraseRoutes);
+app.use("/phrases", phraseRoutes);
 
-
-app.get("/categories/confidence", function(req, res) {
-    res.render("confidence")
-});
-
+//Open Ports
 app.listen(process.env.PORT, process.env.IP, function(){
-    console.log("The Affirmation Project has started!")
+    console.log("The Affirmation Project has started!");
 });
 
