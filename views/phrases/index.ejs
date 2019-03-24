@@ -1,8 +1,12 @@
-
+<!-- Phrase List -->
 <div class="container-fluid">
     <ul class="list-group">
-    <% phrases.forEach(function(phrase){ %>
-      <li class="list-group-item"><%= phrase.affirmation %></li>
+    <% category.phrases.forEach(function(phrase){ %>
+        <a class="aflist" href="/categories/<%= category._id %>/phrases/<%= phrase._id %>/edit">
+            <li class="list-group-item">
+                <%= phrase.affirmation %>
+            </li>
+        </a>
     <% }); %>
     </ul>
- </div>   
+</div>   

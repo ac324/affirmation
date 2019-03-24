@@ -31,41 +31,32 @@ router.post("/", function(req, res){
     });
 });
 
-// SHOW CATEGORY ROUTE
-router.get("/:category", function(req, res) {
-    Category.findOne({name:req.params.category}, function(err, foundCategory){
+// SHOW SINGLE CATEGORY ROUTE
+router.get("/:id", function(req, res) {
+    Category.findById(req.params.id).populate("phrases").exec(function(err,foundCategory){
         if(err || !foundCategory){
             console.log(err);
         } else {
-            Phrase.find({category: foundCategory.name}, function(err, foundPhrases){
-                if(err || !foundPhrases){
-                    console.log(err);
-                } else {
-                    console.log(foundPhrases);
-                    res.render("categories/show", {category: foundCategory, phrases: foundPhrases});        
-                }
-                
-            })
-            
+            res.render("categories/show", {category: foundCategory});        
         }
     });
 });
 
-// EDIT CATEGORY ROUTE
-router.put("/:category", function(req, res){
-    Category.findOneAndUpdate({name: req.params.category}, req.body.category, function(err, updatedCategory){
+// UPDATE CATEGORY ROUTE
+router.put("/:id", function(req, res){
+    Category.findByIdAndUpdate(req.params.id, req.body.category, function(err, updatedCategory){
         if(err){
             console.log("Error: "+ err);
             res.redirect("/categories");
         } else {
-            res.redirect("/categories/" + req.body.category.name);
+            res.redirect("/categories/" + req.params.id);
         }
     });
 });
 
 // DESTROY CATEGORY ROUTE
-router.delete("/:category", function(req, res){
-    Category.findOneAndDelete({name: req.params.category}, function(err){
+router.delete("/:id", function(req, res){
+    Category.findByIdAndDelete(req.params.id, function(err){
         if (err){
             res.redirect("/categories");
         } else {
@@ -74,5 +65,8 @@ router.delete("/:category", function(req, res){
     });
 });
 
+router.get("/slideshow", function(req, res) {
+    res.send("hey yo")
+})
 
 module.exports = router;

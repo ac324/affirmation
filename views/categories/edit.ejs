@@ -1,0 +1,31 @@
+<!-- Edit Category Modal Form -->
+<div class="modal fade" id="editCategoryForm" tabindex="-1" role="dialog" aria-labelledby="editCategoryTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editCategoryTitle">Edit Category</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="/categories/<%= category._id %>?_method=PUT" method="POST">
+            <div class="form-group">
+                <input class="form-control" type = "text" name = "category[name]" value="<%= category.name %>" required>
+            </div>
+            <div class="form-group">
+                <input class="form-control" type = "text" name = "category[icon]" value="<%= category.icon %>" required>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-danger mr-auto" form="deleteCategoryForm">DELETE</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Edit</button>
+            </div>
+        </form>
+        <form id="deleteCategoryForm" class="deleteForm" action="/categories/<%= category._id %>?_method=DELETE" method="POST">
+            
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

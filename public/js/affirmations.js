@@ -1,5 +1,10 @@
 /*global $*/
 
 $('.carousel').carousel({
-  interval: 3000
+  interval: 5000
 })
+
+
+$(document).ready(function () {
+    $('#carouselExampleFade').find('.carousel-item').first().addClass('active');
+});

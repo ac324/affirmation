@@ -11,7 +11,8 @@ var express         = require("express"),
 //Routes
 var indexRoutes = require("./routes/index"),
     categoryRoutes = require("./routes/categories"),
-    phraseRoutes = require("./routes/phrases");
+    phraseRoutes = require("./routes/phrases"),
+    slideshowRoutes = require("./routes/slideshow");
 
 //Declare App Use
 mongoose.connect("mongodb://localhost/affirmations", {useNewUrlParser: true});
@@ -23,7 +24,8 @@ app.use(methodOverride("_method"));
 //Declaring Routes
 app.use(indexRoutes);
 app.use("/categories", categoryRoutes);
-app.use("/phrases", phraseRoutes);
+app.use("/categories/:id/phrases", phraseRoutes);
+app.use("/categories/:id/slideshow", slideshowRoutes);
 
 //Open Ports
 app.listen(process.env.PORT, process.env.IP, function(){
