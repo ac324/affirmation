@@ -8,3 +8,4 @@ $('.carousel').carousel({
 $(document).ready(function () {
     $('#carouselExampleFade').find('.carousel-item').first().addClass('active');
 });
+

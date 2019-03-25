@@ -2,7 +2,7 @@
 <% include ../partials/menu %>
 
 <div class="container">
-    <h1 style="text-align:center; margin:25px;">Create a New Affirmation</h1> 
+    <h2 style="text-align:center; margin:25px;">Create a New <%= category.name %> Affirmation</h2> 
     <div style="width:100%; margin:25px auto;">
         <form action="/categories/<%= category._id %>/phrases" method="POST">
             <div class="form-group">
@@ -17,7 +17,7 @@
                 <button class="btn btn-lg btn-default btn-block btn-primary">Submit!</button>
             </div>
         </form>
-        <a href="/categories">Go Back</a>    
+        <a href="/categories/<%= category._id %>">Go Back</a>    
     </div>
 </div>
 
